@@ -1,5 +1,13 @@
 async function request(fastify, options){
-    fastify.get('/requestimage', async function(request, reply) {
+    require('dotenv').config()
+    fastify.get('/requestimage', {
+        config: {
+          rateLimit: {
+            global: false, max: Number.parseInt(process.env.RATELIMIT_RequestImage),
+            timeWindow: '1 minute'
+          }
+        }
+      }, async function(request, reply) {
         var sharp = require('sharp')
         fastify.mysql.query(
             'SELECT * FROM `telemetry` WHERE id = ?', 
@@ -132,13 +140,19 @@ async function request(fastify, options){
             }
           )
     })
-    fastify.get('/request', async function(request, reply) {
-        var sharp = require('sharp')
+    fastify.get('/request', {
+        config: {
+          rateLimit: {
+            global: false, max: Number.parseInt(process.env.RATELIMIT_Request),
+            timeWindow: '1 minute'
+          }
+        }
+      }, async function(request, reply) {
         fastify.mysql.query(
             'SELECT * FROM `telemetry` WHERE id = ?', 
             [request.query.id],
             async function onResult (err, result) {
-                if(Number.parseInt(request.query.id) > 0){
+                if(result[0] != undefined){
                     reply.send({id: result[0].id, ping: result[0].ping, jitter: result[0].jitter, dl: result[0].dl, ul: result[0].ul, provider: result[0].provider, ul: result[0].city})
                 }else{
                     reply.send("wrong_id")

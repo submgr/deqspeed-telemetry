@@ -9,6 +9,7 @@
     "fastify-formbody": "^5.2.0",
     "fastify-multipart": "^5.2.1",
     "fastify-mysql": "^2.1.0",
+    "fastify-rate-limit": "^5.7.0",
     "jimp": "^0.16.1",
     "sharp": "^0.29.3"
   }

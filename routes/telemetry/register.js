@@ -1,6 +1,13 @@
 async function register(fastify, options){
   var DeviceDetector = require('device-detector-js')
-    fastify.post('/', async function(request, reply) {
+    fastify.post('/', {
+      config: {
+        rateLimit: {
+          global: false, max: Number.parseInt(process.env.RATELIMIT_Register),
+          timeWindow: '1 minute'
+        }
+      }
+    }, async function(request, reply) {
       const deviceDetector = new DeviceDetector()
       const device = deviceDetector.parse(request.headers['user-agent'])
       if(request.body.dl > 0){
