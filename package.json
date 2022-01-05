@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "device-detector-js": "^3.0.1",
+    "dotenv": "^10.0.0",
+    "fastify": "^3.25.3",
+    "fastify-autoload": "^3.9.0",
+    "fastify-autoroutes": "^1.5.0",
+    "fastify-cors": "^6.0.2",
+    "fastify-formbody": "^5.2.0",
+    "fastify-multipart": "^5.2.1",
+    "fastify-mysql": "^2.1.0",
+    "jimp": "^0.16.1",
+    "sharp": "^0.29.3"
+  }
+}
