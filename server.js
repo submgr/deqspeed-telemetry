@@ -1,6 +1,6 @@
 // Require the framework and instantiate it
 require('dotenv').config()
-const fastify = require('fastify')({ logger: false })
+const fastify = require('fastify')({ logger: false, trustProxy: true })
 const autoload = require('fastify-autoload')
 const path = require('path')
 

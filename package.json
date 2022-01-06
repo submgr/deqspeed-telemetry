@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@fastify/proxy-addr": "^3.0.0",
     "device-detector-js": "^3.0.1",
     "dotenv": "^10.0.0",
     "fastify": "^3.25.3",
