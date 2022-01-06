@@ -33,7 +33,11 @@ fastify.setErrorHandler(function (error, request, reply) {
 const start = async () => {
   try {
     await fastify.listen(3000)
-    console.log("Hello, i`m online and ready to work!")
+    var datetime = new Date();
+    console.log("[" + datetime.toISOString().
+    replace(/T/, ' ').replace(/\..+/, '') 
+    + " ("+ Intl.DateTimeFormat().resolvedOptions().timeZone 
+    + ")] — Hello, I'm online and ready to work!")
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
