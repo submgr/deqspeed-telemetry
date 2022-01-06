@@ -1,6 +1,6 @@
 async function getip(fastify, options){
     const https = require('https');
-      fastify.post('/getip', {
+      fastify.get('/getip', {
         config: {
           rateLimit: {
             global: false, max: Number.parseInt(process.env.RATELIMIT_GetIp),
