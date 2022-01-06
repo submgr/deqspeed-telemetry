@@ -1,6 +1,6 @@
 async function register(fastify, options){
   var DeviceDetector = require('device-detector-js')
-    fastify.post('/', {
+    fastify.post('/register', {
       config: {
         rateLimit: {
           global: false, max: Number.parseInt(process.env.RATELIMIT_Register),
