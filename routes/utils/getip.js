@@ -8,7 +8,7 @@ async function getip(fastify, options){
           }
         }
       }, async function(request, reply) {
-        https.get(`https://ipinfo.io/${request.ip}/json`, (resp) => {
+        https.get(`https://ipinfo.io/${request.ip}/json?token=${process.env.TOKEN_IPinfo}`, (resp) => {
         let data = '';
 
         // A chunk of data has been received.
