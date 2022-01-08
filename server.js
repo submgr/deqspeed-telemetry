@@ -21,6 +21,7 @@ fastify.register(require('fastify-rate-limit'), {
   ban: Number.parseInt(process.env.RATELIMIT_Global_Ban),
   timeWindow: '1 minute'
 })
+
 //custom error handler for fastify-rate-limit
 fastify.setErrorHandler(function (error, request, reply) {
   if (reply.statusCode === 429) {
