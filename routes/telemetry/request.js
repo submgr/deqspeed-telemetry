@@ -68,7 +68,7 @@ async function request(fastify, options){
                     </svg>
                     `
                     const image_textsvg_providerValue = `
-                    <svg width="1045" height="60">
+                    <svg width="1245" height="60">
                         <style>
                         .title { fill: #FFFFFF; font-size: 40px; font-weight: bold;}
                         </style>
@@ -78,7 +78,7 @@ async function request(fastify, options){
                     </svg>
                     `
                     const image_textsvg_cityValue = `
-                    <svg width="790" height="60">
+                    <svg width="850" height="60">
                         <style>
                         .title { fill: #FFFFFF; font-size: 42px; font-weight: bold;}
                         </style>
