@@ -13,7 +13,7 @@ async function request(fastify, options){
             'SELECT * FROM `telemetry` WHERE id = ?', 
             [request.query.id],
             async function onResult (err, result) {
-                if(Number.parseInt(request.query.id) > 0){
+                if(result[0] != undefined){
                 
                     const image_textsvg_id = `
                     <svg width="1050" height="783">
@@ -34,6 +34,26 @@ async function request(fastify, options){
                         ${result[0].date.toISOString().
                             replace(/T/, ' ').      // replace T with a space
                             replace(/\..+/, '')}
+                        </text>
+                    </svg>
+                    `
+                    const image_textsvg_jitterValue = `
+                    <svg width="930" height="130">
+                        <style>
+                        .title { fill: #FFFFFF; font-size: 40px; font-weight: regular;}
+                        </style>
+                        <text x="50%" y="50%" font-family="Arial, sans-serif" text-anchor="end" class="title">
+                        ${result[0].jitter}
+                        </text>
+                    </svg>
+                    `
+                    const image_textsvg_betterthanValue = `
+                    <svg width="930" height="130">
+                        <style>
+                        .title { fill: #FFFFFF; font-size: 40px; font-weight: regular;}
+                        </style>
+                        <text x="50%" y="50%" font-family="Arial, sans-serif" text-anchor="end" class="title">
+                        ${result[0].better_than}
                         </text>
                     </svg>
                     `
@@ -89,6 +109,8 @@ async function request(fastify, options){
                     `
                     const image_textsvg_id__Buffer = Buffer.from(image_textsvg_id)
                     const image_textsvg_date__Buffer = Buffer.from(image_textsvg_date)
+                    const image_textsvg_jitterValue__Buffer = Buffer.from(image_textsvg_jitterValue)
+                    const image_textsvg_betterthanValue__Buffer = Buffer.from(image_textsvg_betterthanValue)
                     const image_textsvg_pingValue__Buffer = Buffer.from(image_textsvg_pingValue)
                     const image_textsvg_dlValue__Buffer = Buffer.from(image_textsvg_dlValue)
                     const image_textsvg_ulValue__Buffer = Buffer.from(image_textsvg_ulValue)
@@ -106,6 +128,16 @@ async function request(fastify, options){
                             input: image_textsvg_date__Buffer,
                             top: 40,
                             left: 1010,
+                        },
+                        {
+                            input: image_textsvg_jitterValue__Buffer,
+                            top: 329,
+                            left: 293,
+                        },
+                        {
+                            input: image_textsvg_betterthanValue__Buffer,
+                            top: 249,
+                            left: 44,
                         },
                         {
                             input: image_textsvg_pingValue__Buffer,
@@ -130,7 +162,7 @@ async function request(fastify, options){
                         {
                             input: image_textsvg_cityValue__Buffer,
                             top: 1429,
-                            left: -180,
+                            left: -220,
                         },
                     ])
                     reply.type('image/jpeg').send(image)
