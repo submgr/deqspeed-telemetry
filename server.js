@@ -31,15 +31,15 @@ fastify.setErrorHandler(function (error, request, reply) {
 })
 
 // Run the server!
-const PORT = process.env.port || 3000;
+const app_usePORT = process.env.PORT || 3001;
 const start = async () => {
   try {
-    await fastify.listen(PORT)
+    await fastify.listen(app_usePORT)
     var datetime = new Date();
     console.log("[" + datetime.toISOString().
     replace(/T/, ' ').replace(/\..+/, '') 
     + " ("+ Intl.DateTimeFormat().resolvedOptions().timeZone 
-    + ")] — Hello, I'm online and ready to work! My port is " + PORT)
+    + ")] — Hello, I'm online and ready to work! My port is " + app_usePORT)
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
