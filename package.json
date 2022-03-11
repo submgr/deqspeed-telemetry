@@ -15,7 +15,7 @@
     "jimp": "^0.16.1",
     "sharp": "^0.29.3"
   },
-  "scripts"{
+  "scripts": {
     "start":"node index.js"
   }
 }
