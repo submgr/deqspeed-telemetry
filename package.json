@@ -14,5 +14,8 @@
     "fastify-rate-limit": "^5.7.0",
     "jimp": "^0.16.1",
     "sharp": "^0.29.3"
+  },
+  "scripts"{
+    "start":"node index.js"
   }
 }
