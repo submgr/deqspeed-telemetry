@@ -31,10 +31,11 @@ fastify.setErrorHandler(function (error, request, reply) {
 })
 
 // Run the server!
-const app_usePORT = process.env.PORT || 3001;
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
 const start = async () => {
   try {
-    await fastify.listen(app_usePORT)
+    await fastify.listen(port, host)
     var datetime = new Date();
     console.log("[" + datetime.toISOString().
     replace(/T/, ' ').replace(/\..+/, '') 
