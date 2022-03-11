@@ -40,7 +40,7 @@ const start = async () => {
     console.log("[" + datetime.toISOString().
     replace(/T/, ' ').replace(/\..+/, '') 
     + " ("+ Intl.DateTimeFormat().resolvedOptions().timeZone 
-    + ")] — Hello, I'm online and ready to work! My port is " + app_usePORT)
+    + ")] — Hello, I'm online and ready to work! My port is " + port)
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
